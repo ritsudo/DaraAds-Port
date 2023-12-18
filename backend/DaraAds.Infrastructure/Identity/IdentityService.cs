@@ -95,6 +95,8 @@ namespace DaraAds.Infrastructure.Identity
                 var confirmationToken = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
                 var encodedToken = HttpUtility.UrlEncode(confirmationToken);
                 var message = MessageToConfirmEmail.Message(newUser.Id, newUser.Id,encodedToken, _configuration["ApiUri"]);
+
+                /*
                 try
                 {
                     await _mailService.Send(request.Email, "Подтвердите Email!", message, cancellationToken);
@@ -104,6 +106,7 @@ namespace DaraAds.Infrastructure.Identity
                     await _userManager.DeleteAsync(newUser);
                     throw new SendingMailException("Произошла ошибка!" + ex.Message);
                 }
+                */
 
                 return new CreateUser.Response
                 {
